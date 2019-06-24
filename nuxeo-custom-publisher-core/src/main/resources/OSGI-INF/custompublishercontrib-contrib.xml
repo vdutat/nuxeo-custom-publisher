@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<component name="com.acme.publisher.custompublishercontrib">
+
+  <extension point="tree" target="org.nuxeo.ecm.platform.publisher.impl.service.PublisherServiceImpl">
+    <!-- 
+    You might find some help here:
+    https://explorer.nuxeo.com/nuxeo/site/distribution/latest/viewExtensionPoint/org.nuxeo.ecm.platform.publisher.impl.service.PublisherServiceImpl%2d%2dtree
+    -->
+    
+    <publicationTree name="CustomTree" class="com.acme.publisher.CustomPublicationTree"/>
+    
+  </extension>
+  
+  <extension point="treeInstance" target="org.nuxeo.ecm.platform.publisher.impl.service.PublisherServiceImpl">
+
+    <publicationTreeConfig factory="CoreProxy" name="CustomSectionsTree" title="Sections (Custom)" tree="CustomTree">
+      <parameters>
+        <!-- 
+        <parameter name="RootPath">/default-domain/workspaces</parameter>
+         -->
+        <parameter name="RelativeRootPath">/workspaces</parameter>
+        <parameter name="enableSnapshot">true</parameter>
+        <parameter name="iconExpanded">/icons/folder_open.gif</parameter>
+        <parameter name="iconCollapsed">/icons/folder.gif</parameter>
+      </parameters>
+    </publicationTreeConfig>
+
+  </extension>
+
+
+</component>
